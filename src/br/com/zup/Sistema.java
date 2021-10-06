@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Sistema {
 
     private static List<Fatura> listaDeFaturas = new ArrayList<>();
+    private static List<Consumidor> listaDeConsumidores = new ArrayList<>();
 
 
     private static Scanner capturarDados(String mensagem){
@@ -17,6 +18,7 @@ public class Sistema {
     public static Consumidor instanciarConsumidor() {
         String email = capturarDados("Qual é o email deste consumidor?").nextLine();
         Consumidor consumidor = new Consumidor(email);
+        listaDeConsumidores.add(consumidor);
         return consumidor;
     }
 
@@ -31,8 +33,8 @@ public class Sistema {
 
     public static int menuInicial(){
         System.out.println("Para cadastrar uma fatura, digite 1");
-        System.out.println("Para finalizar, digite 2");
-        int escolhaMenu = capturarDados("").nextInt();
+        System.out.println("Para cadastrar apenas um consumidor, digite 2");
+        int escolhaMenu = capturarDados("Para sair, digite 3").nextInt();
         return escolhaMenu;
     }
 
@@ -45,6 +47,8 @@ public class Sistema {
                     System.out.println(listaDeFaturas);
                     break;
                 case 2:
+                    instanciarConsumidor();
+                case 3:
                     loop = false;
                     break;
             }
