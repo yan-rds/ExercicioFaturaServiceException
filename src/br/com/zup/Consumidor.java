@@ -10,6 +10,11 @@ public class Consumidor {
     public Consumidor() {
     }
 
+    @Override
+    public String toString() {
+        return "\tEmail: " + email;
+    }
+
     public String getEmail() {
         return email;
     }

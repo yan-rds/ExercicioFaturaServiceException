@@ -5,9 +5,9 @@ import java.util.Date;
 public class Fatura {
     private Consumidor consumidor;
     private double valor;
-    private Date vencimento;
+    private String vencimento;
 
-    public Fatura(Consumidor consumidor, double valor, Date vencimento) {
+    public Fatura(Consumidor consumidor, double valor, String vencimento) {
         this.consumidor = consumidor;
         this.valor = valor;
         this.vencimento = vencimento;
@@ -32,11 +32,20 @@ public class Fatura {
         this.valor = valor;
     }
 
-    public Date getVencimento() {
+    public String getVencimento() {
         return vencimento;
     }
 
-    public void setVencimento(Date vencimento) {
+    public void setVencimento(String vencimento) {
         this.vencimento = vencimento;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder concatenador = new StringBuilder();
+        concatenador.append("\nConsumidor " + consumidor);
+        concatenador.append("\nValor " + valor);
+        concatenador.append(("\nVencimento" + vencimento));
+        return concatenador.toString();
     }
 }
