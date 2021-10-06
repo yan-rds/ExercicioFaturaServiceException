@@ -1,7 +1,5 @@
 package br.com.zup;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Sistema {
@@ -21,12 +19,10 @@ public class Sistema {
     }
 
     public static Fatura instanciarFatura() throws Exception{
-        Consumidor consumidor = instanciarConsumidor();
+        String email = capturarDados("Qual é o email do consumidor à ter esta fatura adicionada?").nextLine();
         double valor = capturarDados("Qual o valor da fatura?").nextDouble();
         String vencimento = capturarDados("Qual é a data de vencimento?").nextLine();
-        Fatura fatura = new Fatura(consumidor, valor, vencimento);
-        listaDeFaturas.add(fatura);
-        return fatura;
+        return ServiceFatura.cadastrarFatura(email, valor, vencimento);
     }
 
     public static int menuInicial(){
