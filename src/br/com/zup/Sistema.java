@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Sistema {
 
-    private static List<Fatura> listaDeFaturas = new ArrayList<>();
+
 
 
 

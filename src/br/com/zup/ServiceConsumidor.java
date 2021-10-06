@@ -12,8 +12,17 @@ public class ServiceConsumidor {
         }
     }
 
+    public static void verificarEmailRepetido (String email) throws Exception{
+        for (Consumidor consumidorReferencia : listaDeConsumidores){
+            if (consumidorReferencia.getEmail().equalsIgnoreCase(email)){
+                throw new Exception("Email repetido");
+            }
+        }
+    }
+
     public static Consumidor cadastrarConsumidor (String email) throws Exception{
         validarEmail(email);
+        verificarEmailRepetido(email);
         Consumidor consumidor = new Consumidor(email);
         listaDeConsumidores.add(consumidor);
         return consumidor;
