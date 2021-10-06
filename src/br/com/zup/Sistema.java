@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Sistema {
 
     private static List<Fatura> listaDeFaturas = new ArrayList<>();
-    private static List<Consumidor> listaDeConsumidores = new ArrayList<>();
+
 
 
     private static Scanner capturarDados(String mensagem){
@@ -15,14 +15,12 @@ public class Sistema {
         return new Scanner(System.in);
     }
 
-    public static Consumidor instanciarConsumidor() {
+    public static Consumidor instanciarConsumidor() throws Exception{
         String email = capturarDados("Qual é o email deste consumidor?").nextLine();
-        Consumidor consumidor = new Consumidor(email);
-        listaDeConsumidores.add(consumidor);
-        return consumidor;
+        return ServiceConsumidor.cadastrarConsumidor(email);
     }
 
-    public static Fatura instanciarFatura() {
+    public static Fatura instanciarFatura() throws Exception{
         Consumidor consumidor = instanciarConsumidor();
         double valor = capturarDados("Qual o valor da fatura?").nextDouble();
         String vencimento = capturarDados("Qual é a data de vencimento?").nextLine();
