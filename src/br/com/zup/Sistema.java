@@ -51,7 +51,7 @@ public class Sistema {
                     instanciarConsumidor();
                     break;
                 case 3:
-                    pesquisarFatura();
+                    System.out.println(pesquisarFatura());
                     break;
                 case 4:
                     loop = false;
