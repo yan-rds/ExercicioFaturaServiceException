@@ -13,4 +13,14 @@ public class ServiceFatura {
         return novaFatura;
     }
 
+    public static List<Fatura> pesquisarFaturasPorEmail (String email){
+        List<Fatura> faturasDoUsuario = new ArrayList<>();
+        for (Fatura referencia : listaDeFaturas){
+            if (referencia.getConsumidor().getEmail().equalsIgnoreCase(email)){
+                faturasDoUsuario.add(referencia);
+            }
+        }
+        return faturasDoUsuario;
+    }
+
 }
