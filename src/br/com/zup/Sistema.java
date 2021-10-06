@@ -1,5 +1,6 @@
 package br.com.zup;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Sistema {
@@ -28,21 +29,31 @@ public class Sistema {
     public static int menuInicial(){
         System.out.println("Para cadastrar uma fatura, digite 1");
         System.out.println("Para cadastrar apenas um consumidor, digite 2");
-        int escolhaMenu = capturarDados("Para sair, digite 3").nextInt();
+        System.out.println("Para verificar todas as faturas de um consumidor, digite 3");
+        int escolhaMenu = capturarDados("Para sair, digite 4").nextInt();
         return escolhaMenu;
     }
 
-    public static void executar(){
+    public static List<Fatura> pesquisarFatura () throws Exception{
+        String email = capturarDados("Qual é o email do consumidor?").nextLine();
+        return ServiceFatura.pesquisarFaturasPorEmail(email);
+
+    }
+
+    public static void executar() throws Exception{
         boolean loop = true;
         while (loop) {
             switch (menuInicial()) {
                 case 1:
                     instanciarFatura();
-                    System.out.println(listaDeFaturas);
                     break;
                 case 2:
                     instanciarConsumidor();
+                    break;
                 case 3:
+                    pesquisarFatura();
+                    break;
+                case 4:
                     loop = false;
                     break;
             }
